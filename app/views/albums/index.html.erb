@@ -1,1 +1,13 @@
-<p><%= @album.get_albums( @dates ) %></p>
+<div id="albums-container">
+  <% @albums.each do |album| %>
+    <div class="album">
+      <p><%= album["artist"] %></p>
+      <p><%= album["album"] %></p>
+      <p><%= album["date"] %></p>
+      <%= content_tag(:iframe, '',
+                      src: "https://embed.spotify.com/?uri=spotify%3Aalbum%3A" + album["album_id"],
+                      width: 235, height: 500, frameborder: 0)
+      %>
+    </div>
+  <% end %>
+</div>
